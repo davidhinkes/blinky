@@ -1,0 +1,3 @@
+project : requirements <toolset>gcc-avr <cxxflags>-mmcu=atmega328p <define>F_CPU=10000000UL ;
+
+build-project blinky ;
