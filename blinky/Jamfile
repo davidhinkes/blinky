@@ -1,1 +1,3 @@
 exe blinky : blinky.cc ;
+
+install dist : blinky ;

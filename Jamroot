@@ -1,3 +1,11 @@
-project : requirements <toolset>gcc-avr <cxxflags>-mmcu=atmega328p <define>F_CPU=16000000UL ;
+using gcc : avr : avr-g++ : <compileflags>-mmcu=atmega328p
+                            <compileflags>-fno-exceptions
+                            <compileflags>-ffunction-sections
+                            <compileflags>-fdata-sections ;
+
+
+project : requirements <toolset>gcc-avr
+                       <optimization>space
+                       <define>F_CPU=16000000UL ;
 
 build-project blinky ;
