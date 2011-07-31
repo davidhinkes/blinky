@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -10,17 +11,18 @@ void USART_Init(uint32_t ubrr);
 
 int main() {
   char msg[50];
-  uint16_t num = 0;
+  float num = 0;
   USART_Init(9600);
-  //DDRB |= (1<<PB0);
+  DDRB |= (1<<PB0);
   while (1) {
-    //PORTB |= (1<<PB0);
-    int n = sprintf(msg, "%i\n", num);
+    PORTB |= (1<<PB0);
+    double v = num*num;
+    PORTB &= ~(1<<PB0);
+    int n = sprintf(msg, "Hello world: %i\r\n", static_cast<int>(v));
     msg[n] = 0;
     USART_Transmit(msg); 
     _delay_ms(100);
-    //PORTB &= ~(1<<PB0);
-    num++;
+    num+=0.1;
   }
   return 0;
 }

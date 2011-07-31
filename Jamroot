@@ -2,8 +2,8 @@ using gcc : avr : avr-gcc : <compileflags>-fpack-struct
                             <compileflags>-fshort-enums
                             <compileflags>-funsigned-bitfields
                             <compileflags>-funsigned-char
-                            <compileflags>-Wstrict-prototypes
                             <compileflags>-fno-exceptions
+                            <compileflags>-fno-builtin
                             ;
 
 
