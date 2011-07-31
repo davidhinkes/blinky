@@ -3,11 +3,11 @@ TMPHEX = /tmp/temphex-$(USER)
 all: blinky
 
 clean:
-	bjam --clean-all
+	bjam --clean-all release
 
 blinky:
-	bjam release
+	bjam release -d2
 
 install: blinky
-	avr-objcopy -O ihex -R .eeprom dist/blinky ${TMPHEX}
-	avrdude -p m328p -P /dev/ttyACM0 -U flash:w:${TMPHEX} -c arduino -V	
+	avr-objcopy -j .text -j .data -O ihex dist/blinky ${TMPHEX}
+	avrdude -p m328p -P /dev/ttyACM0 -U flash:w:${TMPHEX} -c arduino -e -V	

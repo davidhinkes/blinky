@@ -1,10 +1,15 @@
-using gcc : avr : avr-g++ : <compileflags>-mmcu=atmega328p
+using gcc : avr : avr-gcc : <compileflags>-fpack-struct
+                            <compileflags>-fshort-enums
+                            <compileflags>-funsigned-bitfields
+                            <compileflags>-funsigned-char
+                            <compileflags>-Wstrict-prototypes
                             <compileflags>-fno-exceptions
-                            <compileflags>-ffunction-sections
-                            <compileflags>-fdata-sections ;
+                            ;
 
 
 project : requirements <toolset>gcc-avr
+                       <cxxflags>-mmcu=atmega328p
+                       <linkflags>-mmcu=atmega328p
                        <optimization>space
                        <define>F_CPU=16000000UL ;
 
