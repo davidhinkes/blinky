@@ -8,9 +8,12 @@ using gcc : avr : avr-gcc : <compileflags>-fpack-struct
 
 
 project : requirements <toolset>gcc-avr
+                       <include>.
                        <cxxflags>-mmcu=atmega328p
                        <linkflags>-mmcu=atmega328p
                        <optimization>space
                        <define>F_CPU=16000000UL ;
+
+use-project /libserial : lib/serial ;
 
 build-project blinky ;
